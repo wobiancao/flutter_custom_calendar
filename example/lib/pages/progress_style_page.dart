@@ -139,7 +139,7 @@ class ProgressStyleDayWidget extends BaseCustomDayWidget {
 
     //进度条
     dynamic progress = dateModel.extraData;
-    if (progress != null && progress != 0) {
+    if (progress != null && progress != 0 ) {
       double padding = 8;
       Paint paint = Paint()
         ..color = Colors.grey
@@ -152,7 +152,7 @@ class ProgressStyleDayWidget extends BaseCustomDayWidget {
       paint.color = Colors.blue;
 
       double startAngle = -90 * pi / 180;
-      double sweepAngle = pi / 180 * (360 * progress / 100);
+      double sweepAngle = pi / 180 * (360 * (progress is num ? progress : 1) / 100);
 
       canvas.drawArc(
           Rect.fromCircle(
