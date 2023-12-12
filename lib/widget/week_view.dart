@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+import 'package:provider/provider.dart';
+
 import '../flutter_custom_calendar.dart';
 import '../utils/date_util.dart';
 import 'month_view.dart';
@@ -41,8 +43,9 @@ class _WeekViewState extends State<WeekView> {
 
     //第一帧后,添加监听，generation发生变化后，需要刷新整个日历
     WidgetsBinding.instance?.addPostFrameCallback((callback) {
-      var calendarLogic = Get.find<CalendarLogic>();
-      ever(calendarLogic.generation, (callback) async{
+      Provider.of<CalendarProvider>(context, listen: false)
+          .generation
+          .addListener(() async {
         items = DateUtil.initCalendarForWeekView(
             widget.year, widget.month, widget.firstDayOfWeek.getDateTime(), 0,
             minSelectDate: widget.configuration.minSelectDate!,
@@ -56,8 +59,11 @@ class _WeekViewState extends State<WeekView> {
 
   @override
   Widget build(BuildContext context) {
-    var calendarLogic = Get.find<CalendarLogic>();
-    CalendarConfiguration configuration = calendarLogic.calendarConfiguration;
+    CalendarProvider calendarProvider =
+        Provider.of<CalendarProvider>(context, listen: false);
+
+    CalendarConfiguration configuration =
+        calendarProvider.calendarConfiguration;
     return new GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
@@ -67,14 +73,14 @@ class _WeekViewState extends State<WeekView> {
           DateModel dateModel = items[index];
           //判断是否被选择
           if (configuration.selectMode == CalendarSelectedMode.multiSelect) {
-            if (calendarLogic.selectedDateList.contains(dateModel)) {
+            if (calendarProvider.selectedDateList.contains(dateModel)) {
               dateModel.isSelected = true;
             } else {
               dateModel.isSelected = false;
             }
           }
           if (configuration.selectMode == CalendarSelectedMode.singleSelect) {
-            if (calendarLogic.selectDateModel == dateModel) {
+            if (calendarProvider.selectDateModel == dateModel) {
               dateModel.isSelected = true;
             } else {
               dateModel.isSelected = false;
@@ -82,7 +88,7 @@ class _WeekViewState extends State<WeekView> {
           }
           if (configuration.selectMode ==
               CalendarSelectedMode.mutltiStartToEndSelect) {
-            if (calendarLogic.selectedDateList.contains(dateModel)) {
+            if (calendarProvider.selectedDateList.contains(dateModel)) {
               dateModel.isSelected = true;
             } else {
               dateModel.isSelected = false;

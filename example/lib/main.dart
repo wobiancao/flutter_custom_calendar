@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'pages/blue_style_page.dart';
 import 'pages/custom_sign_page.dart';
@@ -9,9 +8,6 @@ import 'pages/multi_select_style_page.dart';
 import 'pages/only_week_page.dart';
 import 'pages/progress_style_page.dart';
 import 'pages/red_style_page.dart';
-
-
-
 void main() {
 //  debugProfileBuildsEnabled=true;
 //  debugProfilePaintsEnabled=true;
@@ -23,9 +19,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
 //        checkerboardOffscreenLayers: true, // 使用了saveLayer的图形会显示为棋盘格式并随着页面刷新而闪烁
-//         initialBinding: CalendarBinding(),
         routes: <String, WidgetBuilder>{
           "/default": (context) => DefaultStylePage(
             title: "默认风格+单选",

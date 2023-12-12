@@ -6,8 +6,8 @@ import '../utils/lunar_util.dart';
  * 日期的实体类
  */
 class DateModel {
-   int year = 2023;
-   int month = 12;
+  late int year;
+  late int month;
   int day = 1;
   // fixme List(3)
   List<int> lunar = List.filled(3, 0);

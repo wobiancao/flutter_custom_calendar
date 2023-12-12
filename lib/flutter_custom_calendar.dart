@@ -10,5 +10,5 @@ export 'widget/default_combine_day_view.dart';
 export 'widget/default_custom_day_view.dart';
 export 'widget/default_week_bar.dart';
 export 'configuration.dart';
-export 'calendar_get_provider.dart';
+export 'calendar_provider.dart';
 export 'style/style.dart';

@@ -1,7 +1,6 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'cache_data.dart';
 import 'flutter_custom_calendar.dart';
 import 'utils/LogUtil.dart';
@@ -13,33 +12,31 @@ import 'widget/month_view.dart';
  *
  * 目前的情况：只需要获取状态，不需要监听rebuild
  */
-
-class CalendarBinding extends Bindings{
-  @override
-  void dependencies() {
-    Get.lazyPut(() => CalendarLogic()); ///添加初始化logic
-  }
-
-}
-
-class CalendarLogic extends GetxController {
-  var _totalHeight = 0.0.obs; //当前月视图的整体高度
-  var _selectDateModel = DateModel().obs; //当前选中的日期，用于单选
+class CalendarProvider extends ChangeNotifier {
+  late double _totalHeight; //当前月视图的整体高度
   Set<DateModel> selectedDateList = new HashSet<DateModel>(); //被选中的日期,用于多选
+  DateModel? _selectDateModel; //当前选中的日期，用于单选
   ItemContainerState? lastClickItemState;
   late DateModel _lastClickDateModel;
 
-  double get totalHeight => _totalHeight.value;
+  double get totalHeight => _totalHeight;
 
-  var generation = 0.obs; //生成的int值，每次变化，都会刷新整个日历。
+  ValueNotifier<int> _generation =
+      new ValueNotifier(0); //生成的int值，每次变化，都会刷新整个日历。
 
+  ValueNotifier<int> get generation => _generation;
+
+  set generation(ValueNotifier<int> value) {
+    _generation = value;
+  }
 
   set totalHeight(double value) {
-    _totalHeight.value = value;
+    _totalHeight = value;
   }
 
   changeTotalHeight(double value) {
-    _totalHeight.value = value;
+    _totalHeight = value;
+    notifyListeners();
   }
 
   DateModel get lastClickDateModel =>
@@ -50,13 +47,14 @@ class CalendarLogic extends GetxController {
     print("set lastClickDateModel:$lastClickDateModel");
   }
 
-  DateModel get selectDateModel => _selectDateModel.value;
+  DateModel? get selectDateModel => _selectDateModel;
 
-  set selectDateModel(DateModel value) {
-    _selectDateModel.value = value;
+  set selectDateModel(DateModel? value) {
+    _selectDateModel = value;
     LogUtil.log(
         TAG: this.runtimeType,
         message: "selectDateModel change:$selectDateModel");
+   notifyListeners();
   }
 
   //根据lastClickDateModel，去计算需要展示的星期视图的初始index

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../flutter_custom_calendar.dart';
 import '../utils/LogUtil.dart';
@@ -15,7 +15,7 @@ class WeekViewPager extends StatefulWidget {
 class _WeekViewPagerState extends State<WeekViewPager>
     with AutomaticKeepAliveClientMixin {
   late int lastMonth; //保存上一个月份，不然不知道月份发生了变化
-  late CalendarLogic calendarLogic;
+  late CalendarProvider calendarProvider;
 
 //  PageController newPageController;
 
@@ -24,9 +24,9 @@ class _WeekViewPagerState extends State<WeekViewPager>
     super.initState();
     LogUtil.log(TAG: this.runtimeType, message: "WeekViewPager initState");
 
-    calendarLogic = Get.find<CalendarLogic>();
+    calendarProvider = Provider.of<CalendarProvider>(context, listen: false);
 
-    lastMonth = calendarLogic.lastClickDateModel.month;
+    lastMonth = calendarProvider.lastClickDateModel.month;
   }
 
   @override
@@ -41,14 +41,15 @@ class _WeekViewPagerState extends State<WeekViewPager>
     LogUtil.log(TAG: this.runtimeType, message: "WeekViewPager build");
 
     //    获取到当前的CalendarProvider对象,设置listen为false，不需要刷新
-    
+    CalendarProvider calendarProvider =
+        Provider.of<CalendarProvider>(context, listen: false);
     CalendarConfiguration configuration =
-        calendarLogic.calendarConfiguration;
+        calendarProvider.calendarConfiguration;
     return Container(
       height: configuration.itemSize ?? MediaQuery.of(context).size.width / 7,
       child: PageView.builder(
         onPageChanged: (position) {
-          if (calendarLogic.expandStatus.value == true) {
+          if (calendarProvider.expandStatus.value == true) {
             return;
           }
 
@@ -71,19 +72,19 @@ class _WeekViewPagerState extends State<WeekViewPager>
               listener(firstDayOfWeek.year, firstDayOfWeek.month);
             });
             lastMonth = currentMonth;
-            if (calendarLogic.lastClickDateModel == null || calendarLogic.lastClickDateModel.month != currentMonth) {
+            if (calendarProvider.lastClickDateModel == null || calendarProvider.lastClickDateModel.month != currentMonth) {
               DateModel temp = new DateModel();
               temp.year = firstDayOfWeek.year;
               temp.month = firstDayOfWeek.month;
               temp.day = firstDayOfWeek.day + 14;
               print('83 周视图的变化: $temp');
-              calendarLogic.lastClickDateModel = temp;
+              calendarProvider.lastClickDateModel = temp;
             }
           }
-//          calendarLogic.lastClickDateModel = configuration.weekList[position]
+//          calendarProvider.lastClickDateModel = configuration.weekList[position]
 //            ..day += 4;
         },
-        controller: calendarLogic.calendarConfiguration.weekController,
+        controller: calendarProvider.calendarConfiguration.weekController,
         itemBuilder: (context, index) {
           DateModel dateModel = configuration.weekList[index];
           print('dateModel: $dateModel');
@@ -91,7 +92,7 @@ class _WeekViewPagerState extends State<WeekViewPager>
             year: dateModel.year,
             month: dateModel.month,
             firstDayOfWeek: dateModel,
-            configuration: calendarLogic.calendarConfiguration,
+            configuration: calendarProvider.calendarConfiguration,
           );
         },
         itemCount: configuration.weekList.length,

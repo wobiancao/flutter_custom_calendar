@@ -199,20 +199,6 @@ class DateUtil {
   }
 
   /**
-   * 当前在第几行
-   */
-  static int getCurrentRow(DateTime currentTime, int offset) {
-    int weekDay = currentTime.weekday + offset;
-    //计算本周的第一天
-    var firstDayOfWeek = currentTime.add(Duration(days: -weekDay)).weekday;
-    var firstWeekDay = DateTime(currentTime.year, currentTime.month, 1).weekday % 7;
-    var lastMonthRestDayCount = (firstWeekDay - (firstDayOfWeek % 7)) % 7;
-    var thisMonthDayCount = currentTime.day;
-    return ((thisMonthDayCount + lastMonthRestDayCount) / 7.0).ceil();
-  }
-
-
-  /**
    * 获取本周的7个item
    */
   static List<DateModel> initCalendarForWeekView(

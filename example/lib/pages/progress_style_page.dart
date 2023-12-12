@@ -139,7 +139,7 @@ class ProgressStyleDayWidget extends BaseCustomDayWidget {
 
     //进度条
     dynamic progress = dateModel.extraData;
-    if (progress != null && progress != 0) {
+    if (progress != null && progress != 0 && progress is num) {
       double padding = 8;
       Paint paint = Paint()
         ..color = Colors.grey
