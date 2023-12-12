@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_calendar/widget/week_view.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_custom_calendar/configuration.dart';
-import 'package:flutter_custom_calendar/flutter_custom_calendar.dart';
-import 'package:flutter_custom_calendar/utils/LogUtil.dart';
+import 'package:get/get.dart';
+
+import '../flutter_custom_calendar.dart';
+import '../utils/LogUtil.dart';
+import 'week_view.dart';
 
 class WeekViewPager extends StatefulWidget {
-  const WeekViewPager({Key key}) : super(key: key);
+  const WeekViewPager({Key? key}) : super(key: key);
 
   @override
   _WeekViewPagerState createState() => _WeekViewPagerState();
@@ -15,8 +14,8 @@ class WeekViewPager extends StatefulWidget {
 
 class _WeekViewPagerState extends State<WeekViewPager>
     with AutomaticKeepAliveClientMixin {
-  int lastMonth; //保存上一个月份，不然不知道月份发生了变化
-  CalendarProvider calendarProvider;
+  late int lastMonth; //保存上一个月份，不然不知道月份发生了变化
+  late CalendarLogic calendarLogic;
 
 //  PageController newPageController;
 
@@ -25,9 +24,9 @@ class _WeekViewPagerState extends State<WeekViewPager>
     super.initState();
     LogUtil.log(TAG: this.runtimeType, message: "WeekViewPager initState");
 
-    calendarProvider = Provider.of<CalendarProvider>(context, listen: false);
+    calendarLogic = Get.find<CalendarLogic>();
 
-    lastMonth = calendarProvider.lastClickDateModel.month;
+    lastMonth = calendarLogic.lastClickDateModel.month;
   }
 
   @override
@@ -42,15 +41,14 @@ class _WeekViewPagerState extends State<WeekViewPager>
     LogUtil.log(TAG: this.runtimeType, message: "WeekViewPager build");
 
     //    获取到当前的CalendarProvider对象,设置listen为false，不需要刷新
-    CalendarProvider calendarProvider =
-        Provider.of<CalendarProvider>(context, listen: false);
+    
     CalendarConfiguration configuration =
-        calendarProvider.calendarConfiguration;
+        calendarLogic.calendarConfiguration;
     return Container(
       height: configuration.itemSize ?? MediaQuery.of(context).size.width / 7,
       child: PageView.builder(
         onPageChanged: (position) {
-          if (calendarProvider.expandStatus.value == true) {
+          if (calendarLogic.expandStatus.value == true) {
             return;
           }
 
@@ -73,19 +71,19 @@ class _WeekViewPagerState extends State<WeekViewPager>
               listener(firstDayOfWeek.year, firstDayOfWeek.month);
             });
             lastMonth = currentMonth;
-            if (calendarProvider.lastClickDateModel == null || calendarProvider.lastClickDateModel.month != currentMonth) {
+            if (calendarLogic.lastClickDateModel == null || calendarLogic.lastClickDateModel.month != currentMonth) {
               DateModel temp = new DateModel();
               temp.year = firstDayOfWeek.year;
               temp.month = firstDayOfWeek.month;
               temp.day = firstDayOfWeek.day + 14;
               print('83 周视图的变化: $temp');
-              calendarProvider.lastClickDateModel = temp;
+              calendarLogic.lastClickDateModel = temp;
             }
           }
-//          calendarProvider.lastClickDateModel = configuration.weekList[position]
+//          calendarLogic.lastClickDateModel = configuration.weekList[position]
 //            ..day += 4;
         },
-        controller: calendarProvider.calendarConfiguration.weekController,
+        controller: calendarLogic.calendarConfiguration.weekController,
         itemBuilder: (context, index) {
           DateModel dateModel = configuration.weekList[index];
           print('dateModel: $dateModel');
@@ -93,7 +91,7 @@ class _WeekViewPagerState extends State<WeekViewPager>
             year: dateModel.year,
             month: dateModel.month,
             firstDayOfWeek: dateModel,
-            configuration: calendarProvider.calendarConfiguration,
+            configuration: calendarLogic.calendarConfiguration,
           );
         },
         itemCount: configuration.weekList.length,

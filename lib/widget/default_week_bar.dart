@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_calendar/constants/constants.dart';
-import 'package:flutter_custom_calendar/style/style.dart';
 
+import '../constants/constants.dart';
+import '../style/style.dart';
 import 'base_week_bar.dart';
 
 ///**
@@ -40,7 +40,7 @@ import 'base_week_bar.dart';
 //}
 
 class DefaultWeekBar extends BaseWeekBar {
-  const DefaultWeekBar({Key key}) : super(key: key);
+  const DefaultWeekBar({Key? key}) : super(key: key);
 
   @override
   Widget getWeekBarItem(int index) {

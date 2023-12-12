@@ -3,6 +3,10 @@
 
 A calendar widget in flutter,you can design what you want to show!
 
+* Add 3.0 null safety support
+* Main branch state management changed to Getx
+* Provider state management in the provider branch
+
 Language:English|[中文简体](README.md)
 
 - [FlutterCalendarWidget](#fluttercalendarwidget)
@@ -136,5 +140,3 @@ Major changes：
 ## API Documentation
 
 [API Documentation](API.md)
-
-

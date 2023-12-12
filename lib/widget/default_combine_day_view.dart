@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_calendar/flutter_custom_calendar.dart';
-import 'package:flutter_custom_calendar/style/style.dart';
 
+import '../model/date_model.dart';
+import '../style/style.dart';
 import 'base_day_view.dart';
 
 /**
