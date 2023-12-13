@@ -3,6 +3,9 @@
 
 A calendar widget in flutter,you can design what you want to show!
 
+## Original project address
+[flutter_custom_calendar](https://github.com/fluttercandies/flutter_custom_calendar)
+
 ## pub.dev plugin
 [get_flutter_custom_calendar](https://pub.dev/packages/get_flutter_custom_calendar)
 
@@ -80,7 +83,11 @@ Language:English|[中文简体](README.md)
 ```
 flutter_custom_calendar:
     git:
-      url: https://github.com/LXD312569496/flutter_custom_calendar.git
+      url: https://github.com/wobiancao/flutter_custom_calendar.git
+```
+or
+```
+get_flutter_custom_calendar: ^2.0.0+1
 ```
 
 2.import flutter_custom_calendar lib

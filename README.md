@@ -3,7 +3,10 @@
 
 Flutter上的一个日历控件，可以定制成自己想要的样子。
 
-## frok后插件pub.dev地址 
+## 原项目地址
+[flutter_custom_calendar](https://github.com/fluttercandies/flutter_custom_calendar)
+
+## fork后插件pub.dev地址 
 [get_flutter_custom_calendar](https://pub.dev/packages/get_flutter_custom_calendar)
 
 ## [2.0.0+1] 仅更新master get状态管理分支
@@ -80,12 +83,16 @@ Language: [English](README_en.md)|中文简体
 ```
 flutter_custom_calendar:
     git:
-      url: https://github.com/LXD312569496/flutter_custom_calendar.git
+      url: https://github.com/wobiancao/flutter_custom_calendar.git
+```
+or
+```
+get_flutter_custom_calendar: ^2.0.0+1
 ```
 
 2.导入flutter_custom_calendar库
 ```
-import 'package:flutter_custom_calendar/flutter_custom_calendar.dart';
+import 'package:get_flutter_custom_calendar/flutter_custom_calendar.dart';
 ```
 
 3.创建CalendarViewWidget对象，配置CalendarController
