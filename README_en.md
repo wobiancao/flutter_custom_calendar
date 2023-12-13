@@ -99,6 +99,12 @@ CalendarViewWidget calendar= CalendarViewWidget(
 
 4.operate controller
 ```
+controller.currentDayPage();//You can return to the current month or week page in both monthly and weekly views
+```
+```
+controller.changeExtraData(customExtraData);//ExtraData can be injected at any time
+```
+```
 controller.toggleExpandStatus();//Switch between month view and week view
 ```
 

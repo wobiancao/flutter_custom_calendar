@@ -102,6 +102,14 @@ CalendarViewWidget calendar= CalendarViewWidget(
 * 利用CalendarController来配置一些数据，并且可以通过CalendarController进行一些操作或者事件监听，比如滚动到下一个月，获取当前被选中的Item等等。
 
 4.操作日历
+
+```
+controller.currentDayPage();//月视图或周视图下 都可回到当月或当周page
+```
+```
+controller.changeExtraData(customExtraData);//额外数据随时可以注入
+```
+
 ```
 controller.toggleExpandStatus();//月视图和周视图的切换
 ```
