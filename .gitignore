@@ -10,3 +10,4 @@ ios/.generated/
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.*
 example/ios/Podfile.lock
+/screenshot/
