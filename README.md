@@ -49,7 +49,7 @@ Language: [English](README_en.md)|中文简体
 <img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-15-30-50-868_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
 <td>
-<img src="[https://user-gold-cdn.xitu.io/2019/10/9/16db0619af4c854a?w=828&h=1792&f=png&s=129203](https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-15-30-55-491_com.example.example.jpg?raw=true)" width="280" height="620">
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-15-30-55-491_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
 <tr>
 <td>
@@ -60,7 +60,6 @@ Language: [English](README_en.md)|中文简体
 </td>
 </tr>
 
-<tr>
 <td>
 <img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-14-15-23-860_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
