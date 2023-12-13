@@ -63,8 +63,9 @@ Language:English|[中文简体](README.md)
 <img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-14-15-23-860_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
 <td>
-<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/WX20231213-161905%402x.png" width="280" height="620">
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/WX20231213-162215@2x.png?raw=true" width="280" height="578">
 </td>
+
 
 
 
