@@ -3,9 +3,15 @@
 
 Flutter上的一个日历控件，可以定制成自己想要的样子。
 
-* 增加3.0 null-safety 支持
-* 主分支状态管理更改为Getx
-* provider状态管理 在provider分支
+## [2.0.0+1] 仅更新master get状态管理分支
+- 周视图、月视图 添加"回到今天"
+- 额外数据可以随时注入
+
+## [2.0.0]
+- null-safety 支持
+- 主分支状态管理改成getx
+- provider状态管理保留
+
 
 Language: [English](README_en.md)|中文简体
 
