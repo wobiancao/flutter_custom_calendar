@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_calendar/flutter_custom_calendar.dart';
+import 'package:get_flutter_custom_calendar/flutter_custom_calendar.dart';
 
 /**
  * 自定义风格+多选

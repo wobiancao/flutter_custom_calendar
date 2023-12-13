@@ -219,7 +219,7 @@ class DateUtil {
       int year, int month, DateTime currentDate, int weekStart,
       {required DateModel minSelectDate,
       required DateModel maxSelectDate,
-      required Map<DateModel, Object> extraDataMap,
+      required Map<DateModel, dynamic> extraDataMap,
       int offset = 0}) {
     List<DateModel> items = [];
 

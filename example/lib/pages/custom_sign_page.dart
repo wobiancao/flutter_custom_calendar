@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_calendar/flutter_custom_calendar.dart';
+import 'package:get_flutter_custom_calendar/flutter_custom_calendar.dart';
 
 import '../random_pk.dart';
 
@@ -44,9 +44,7 @@ class _CustomSignPageState extends State<CustomSignPage> {
   @override
   void initState() {
     super.initState();
-    controller = new CalendarController(
-
-        extraDataMap: customExtraData);
+    controller =  CalendarController();
 
     controller.addMonthChangeListener(
       (year, month) {
@@ -93,6 +91,13 @@ class _CustomSignPageState extends State<CustomSignPage> {
                     onPressed: () {
                       controller.moveToNextMonth();
                     }),
+                Expanded(child: SizedBox()),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.changeExtraData(customExtraData);
+                  },
+                  child: new Text("注入额外数据"),
+                )
               ],
             ),
             CalendarViewWidget(
@@ -175,7 +180,7 @@ class CustomStyleDayWidget extends BaseCombineDayWidget {
               ),
             ],
           ),
-          dateModel.extraData != null
+          dateModel.extraData != null && dateModel.extraData is String
               ? Positioned(
                   child: Text(
                     "${dateModel.extraData}",

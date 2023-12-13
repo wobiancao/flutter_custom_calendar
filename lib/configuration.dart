@@ -114,6 +114,10 @@ class CalendarConfiguration {
         this.monthList=const [],
         this.weekList=const []});
 
+  /// 变更额外数据
+  void changeExtraData(Map<DateModel, Object> extraDataMap){
+      this.extraDataMap = extraDataMap;
+  }
   @override
   String toString() {
     return 'CalendarConfiguration{selectMode: $selectMode, minYear: $minYear, maxYear: $maxYear, minYearMonth: $minYearMonth, maxYearMonth: $maxYearMonth, nowYear: $nowYear, nowMonth: $nowMonth, minSelectYear: $minSelectYear, minSelectMonth: $minSelectMonth, minSelectDay: $minSelectDay, maxSelectYear: $maxSelectYear, maxSelectMonth: $maxSelectMonth, maxSelectDay: $maxSelectDay, defaultSelectedDateList: $defaultSelectedDateList, maxMultiSelectCount: $maxMultiSelectCount, extraDataMap: $extraDataMap, monthList: $monthList, weekList: $weekList, monthController: $monthController, weekController: $weekController}';

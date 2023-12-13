@@ -365,6 +365,49 @@ class CalendarController {
     }
   }
 
+  /**
+   * 当前月page
+   */
+  Future<bool> currentDayPage() async {
+    var nowDate = DateTime.now();
+    if (calendarLogic.expandStatus.value == true) {
+      //计算目标索引
+      var targetDate = _getNowTimeMonthPage(nowDate);
+      var targetPage = monthList.indexOf(targetDate);
+      int currentIndex = calendarLogic.calendarConfiguration.monthController!.page!.toInt();
+      if (currentIndex == targetPage) {
+        return false;
+      } else {
+        calendarLogic.calendarConfiguration.monthController ?.animateToPage( targetPage, duration: Duration(milliseconds: 300), curve: Curves.ease);
+        calendarLogic.calendarConfiguration.monthChangeListeners
+            .forEach((listener) {
+          listener(targetDate.year, targetDate.month);
+        });
+        // DateModel temp = new DateModel();
+        // temp.year = monthList[currentIndex].year;
+        // temp.month = monthList[currentIndex].month;
+        // temp.day = monthList[currentIndex].day + 14;
+        print('298 周视图的变化: $targetDate');
+        calendarLogic.lastClickDateModel = targetDate;
+        return true;
+      }
+    } else {
+      //周视图
+      int currentIndex = calendarLogic.calendarConfiguration.weekController!.page!.toInt();
+      DateModel dateModel = _getNowTimeWeekPage(nowDate);
+      //计算目标索引
+      int targetPage = weekList.indexOf(dateModel);
+      if (currentIndex == targetPage) {
+        return false;
+      } else {
+        calendarLogic.calendarConfiguration.weekController
+            ?.animateToPage( targetPage, duration: DEFAULT_DURATION, curve: Curves.ease);
+        return true;
+      }
+    }
+  }
+
+
   //跳转到指定日期
   void moveToCalendar(int year, int month, int day,
       {bool needAnimation = false,
@@ -528,6 +571,11 @@ class CalendarController {
     return monthList[monthController.page!.toInt()];
   }
 
+  // 获取当前的周
+  DateModel getCurrentWeek() {
+    return monthList[weekController.page!.toInt()];
+  }
+
   //获取被选中的日期,多选
   Set<DateModel> getMultiSelectCalendar() {
     return calendarLogic.selectedDateList;
@@ -546,6 +594,31 @@ class CalendarController {
     // fixme
     // calendarConfiguration.weekChangeListeners = null;
     // calendarConfiguration.monthChangeListeners = null;
+  }
+
+  /// 获取当前月的page
+  DateModel _getNowTimeMonthPage(DateTime nowTime) {
+    var temp;
+    monthList.forEach((date) {
+      if(DateUtils.isSameMonth(DateTime(date.year, date.month, date.day), nowTime)){
+        temp = date;
+      }
+    });
+    return temp;
+  }
+
+  /// 获取当前周的page
+  DateModel _getNowTimeWeekPage(DateTime nowTime) {
+    var temp;
+    // 找到当前日期所在周的周日
+    DateTime sundayDate = nowTime.subtract(Duration(days: nowTime.weekday - 1));
+
+    weekList.forEach((date) {
+      if(DateUtils.isSameDay(DateTime(date.year, date.month, date.day), sundayDate)){
+        temp = date;
+      }
+    });
+    return temp;
   }
 }
 

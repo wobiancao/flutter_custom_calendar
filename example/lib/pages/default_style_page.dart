@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_calendar/flutter_custom_calendar.dart';
+import 'package:get_flutter_custom_calendar/flutter_custom_calendar.dart';
 
 /**
  * 默认风格+单选
@@ -54,7 +54,7 @@ class _DefaultStylePageState extends State<DefaultStylePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: new Container(
+      body: SingleChildScrollView(
         child: new Column(
           children: <Widget>[
             new Row(
@@ -63,8 +63,8 @@ class _DefaultStylePageState extends State<DefaultStylePage> {
                 new IconButton(
                     icon: Icon(Icons.navigate_before),
                     onPressed: () {
-//                      controller.moveToPreviousMonth();
-                      controller.previousPage();
+                     controller.previousPage();
+                      // controller.moveToCurrentMonth();
                     }),
                 ValueListenableBuilder(
                     valueListenable: text,
@@ -77,6 +77,13 @@ class _DefaultStylePageState extends State<DefaultStylePage> {
 //                      controller.moveToNextMonth();
                       controller.nextPage();
                     }),
+                Expanded(child: SizedBox()),
+                ElevatedButton(
+                  onPressed: () {
+                    controller.currentDayPage();
+                  },
+                  child: new Text("回到今天"),
+                )
               ],
             ),
             CalendarViewWidget(

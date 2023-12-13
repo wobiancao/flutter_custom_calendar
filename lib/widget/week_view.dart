@@ -26,7 +26,7 @@ class WeekView extends StatefulWidget {
 class _WeekViewState extends State<WeekView> {
   late List<DateModel> items;
 
-  late Map<DateModel, Object> extraDataMap; //自定义额外的数据
+  late Map<DateModel, dynamic> extraDataMap; //自定义额外的数据
 
   @override
   void initState() {
