@@ -3,6 +3,15 @@
 
 A calendar widget in flutter,you can design what you want to show!
 
+## pub.dev plugin
+[get_flutter_custom_calendar](https://pub.dev/packages/get_flutter_custom_calendar)
+
+
+## [2.0.0+1] Only update the master get status management branch
+-Add "Back to Today" to weekly and monthly views
+-Additional data can be injected at any time
+
+## [2.0.0]
 * Add 3.0 null safety support
 * Main branch state management changed to Getx
 * Provider state management in the provider branch
@@ -30,48 +39,32 @@ Language:English|[中文简体](README.md)
 * According to the actual scene, you can add custom additional data to the item to realize various additional functions. For example, to realize the calendar of progress bar style and various marks of calendar
 * Support weekly view display, monthly view and weekly view display and switching linkage
 
-### Online Demo
-
-Calendar supports web Preview：[Click here for preview](https://lxd312569496.github.io/flutter_custom_calendar/#/)
-
 
 ### Example
 
 <table>
 <tbody>
+    <td>
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-15-30-50-868_com.example.example.jpg?raw=true" width="280" height="620">
+</td>
+<td>
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-15-30-55-491_com.example.example.jpg?raw=true" width="280" height="620">
+</td>
 <tr>
 <td>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8hjt66daxj30n01dsad5.jpg" width="280" height="620">
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-14-15-11-356_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
-
 <td>
-<img src="https://user-gold-cdn.xitu.io/2019/10/9/16db060ca77ecad2?w=828&h=1792&f=png&s=126261" width="280" height="620">
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-14-15-18-720_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
 </tr>
 
-<tr>
 <td>
-<img src="https://user-gold-cdn.xitu.io/2019/10/9/16db061203661eca?w=828&h=1792&f=png&s=157230" width="280" height="620">
+<img src="https://github.com/wobiancao/flutter_custom_calendar/blob/master/screenshot/Screenshot_2023-12-13-14-15-23-860_com.example.example.jpg?raw=true" width="280" height="620">
 </td>
-<td>
-<img src="https://user-gold-cdn.xitu.io/2019/10/9/16db0614e44b6e0d?w=828&h=1792&f=png&s=145423" width="280" height="620">
-</td>
-<td>
-<img src="https://user-gold-cdn.xitu.io/2019/10/9/16db0619af4c854a?w=828&h=1792&f=png&s=129203" width="280" height="620">
-</td>
-</tr>
 
-<tr>
-<td>
-<img src="https://user-gold-cdn.xitu.io/2019/10/9/16db061ef0ed35dd?w=828&h=1792&f=png&s=81260" width="280" height="620">
-</td>
-<td>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8hji5yiqkj30u01sx0wy.jpg" width="280" height="620">
-</td>
-<td>
-<img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g8hjntithzj30u01sxtcl.jpg" width="280" height="620">
-</td>
-</tr>
+
+
 
 </tbody>
 </table>

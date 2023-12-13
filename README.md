@@ -3,6 +3,9 @@
 
 Flutter上的一个日历控件，可以定制成自己想要的样子。
 
+## frok后插件pub.dev地址 
+[get_flutter_custom_calendar](https://pub.dev/packages/get_flutter_custom_calendar)
+
 ## [2.0.0+1] 仅更新master get状态管理分支
 - 周视图、月视图 添加"回到今天"
 - 额外数据可以随时注入
@@ -16,9 +19,9 @@ Flutter上的一个日历控件，可以定制成自己想要的样子。
 Language: [English](README_en.md)|中文简体
 
 - [FlutterCalendarWidget](#fluttercalendarwidget)
-    - [概述](#%e6%a6%82%e8%bf%b0)
-    - [在线Demo](#%e5%9c%a8%e7%ba%bfdemo)
-    - [效果图](#%e6%95%88%e6%9e%9c%e5%9b%be)
+  - [概述](#%e6%a6%82%e8%bf%b0)
+  - [在线Demo](#%e5%9c%a8%e7%ba%bfdemo)
+  - [效果图](#%e6%95%88%e6%9e%9c%e5%9b%be)
 - [使用](#%e4%bd%bf%e7%94%a8)
 - [2.0版本](#20%e7%89%88%e6%9c%ac)
 - [注意事项](#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9)
@@ -36,9 +39,6 @@ Language: [English](README_en.md)|中文简体
 * 根据实际场景，可以给Item添加自定义的额外数据，实现各种额外的功能。比如实现进度条风格的日历，实现日历的各种标记
 * 支持周视图的展示,支持月份视图和星期视图的展示与切换联动
 
-### 在线Demo
-
-日历支持web预览：[点击此处进入预览](https://lxd312569496.github.io/flutter_custom_calendar/#/)
 
 
 ### 效果图
